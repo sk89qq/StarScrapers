@@ -38,7 +38,11 @@ lsb(-1, 0, 0)
 lsb(-5, 0, 4096)
 ```
 
-The attachment key passed to `wfb.a` is a separate native integer and may be chassis-variable.
+## Attachment-key semantics — resolved
+
+The integer supplied to `wfb.a(int, lsb)` is **not used to filter, project, or select the hardpoint**. The method computes a local integer from that argument, but that value is never subsequently read. The method then either creates the hardpoint array or allocates a one-element-larger array, copies the existing entries in order, appends the supplied `lsb`, and stores the new array.
+
+Therefore the authoritative behavior is simply ordered append. The attachment key must not be treated as a spatial/filtering key in the port.
 
 ## Scaling behavior
 
@@ -46,7 +50,7 @@ The attachment key passed to `wfb.a` is a separate native integer and may be cha
 
 ## Porting consequence
 
-Hardpoints must remain separate component metadata. They must not be flattened into polygon vertices or reconstructed from bounding boxes. The canonical Roblox component representation should preserve the native attachment key plus the three native `lsb` fields until the remaining `wfb.a(int,lsb)` filtering/projection semantics are resolved.
+Hardpoints must remain separate component metadata. They must not be flattened into polygon vertices or reconstructed from bounding boxes. Preserve the native `lsb` fields and their insertion order. Do not implement attachment-key filtering or projection.
 
 ## Status
-`EXTRACTED / NEXT TARGET`
+`RESOLVED`
