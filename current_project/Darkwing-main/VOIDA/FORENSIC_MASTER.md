@@ -1,6 +1,6 @@
 # DarkWing / Void Hunters — FORENSIC MASTER — CURRENT SNAPSHOT
 
-**Effective snapshot:** 2026-08-28 16:55 CDT  
+**Effective snapshot:** 2026-08-28 17:02 CDT  
 **Purpose:** single current dispatch/source-of-truth layer for native-forensic port work. Treat this as a restart point; prior reports are evidence, not active context.
 
 ## 1. Reading order
@@ -40,7 +40,7 @@ Generic replacement-engine physics is not forensic scope.
 | Domain | Canonical file | Current status |
 |---|---|---|
 | Engine-bound/general native inputs | `CANONICAL/VALUES/NATIVE_ENGINE_INPUTS.csv` | CURRENT AUTHORITY |
-| Components / 56 slots | `CANONICAL/VALUES/COMPONENTS_56.csv` | PARTIAL — fixed data substantially recovered; slots 31–41 source-resolved; slots 48–55 procedural generation remains open |
+| Components / 56 slots | `CANONICAL/VALUES/COMPONENTS_56.csv` | PARTIAL — fixed data substantially recovered; slots 31–41 source-resolved; `jba`/`tka` procedural generator contract recovered for slots 48–55; exact supplied shape literals/helper math remain to be materialized where implementation requires them |
 | Weapons | `CANONICAL/VALUES/WEAPONS.csv` | RECOVERED — consumer semantics remain only where needed |
 | Thrusters | `CANONICAL/VALUES/THRUSTERS.csv` | RECOVERED/PARTIAL |
 | Shields | `CANONICAL/VALUES/SHIELDS.csv` | RECOVERED; native boundary + runtime integration IMPLEMENTED |
@@ -50,7 +50,7 @@ Generic replacement-engine physics is not forensic scope.
 ## 6. Current active queue
 
 ### P0 — required native/gameplay closure
-1. Resolve remaining generated/procedural component geometry, primarily slots 48–55 (`jba` generation chain).
+1. Resolve remaining generated/procedural component geometry: `jba` and `tka` control flow is now source-verified; remaining work is exact supplied shape-array materialization plus helper math only where required by the implementation.
 2. Hardpoint projection/filtering needed for exact placement.
 3. Component hit selection and exact HP lookup where required.
 4. Weapon consumer semantics needed to interpret recovered native inputs.
