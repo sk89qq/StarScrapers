@@ -1,7 +1,7 @@
 # Generated / Indirect Component Geometry Recovery — 2026-08-28
 
 ## Purpose
-Advance the P0 generated/indirect component-geometry item using the preserved native JAR disassembly. This record supersedes the earlier claim that the `wlb`/`fnb` generation bodies were unavailable.
+Advance the P0 generated/indirect component-geometry item using the preserved native JAR disassembly.
 
 ## Source anchor
 - Native definition builder: `wlb.f(byte)`
@@ -17,39 +17,15 @@ The exact bytecode implementation constructs two 12-element offset tables from `
 For the first table `X`:
 
 ```text
-X = [
-  -fnb.b,
-  -fnb.a,
-  -fnb.b/2,
-  0,
-  fnb.b/2,
-  fnb.a,
-  fnb.b,
-  fnb.a,
-  fnb.b/2,
-  0,
-  -fnb.b/2,
-  -fnb.a
-]
+X = [-fnb.b, -fnb.a, -fnb.b/2, 0, fnb.b/2, fnb.a,
+     fnb.b, fnb.a, fnb.b/2, 0, -fnb.b/2, -fnb.a]
 ```
 
 For the second table `Y`:
 
 ```text
-Y = [
-  0,
-  -fnb.b/2,
-  -fnb.a,
-  -fnb.b,
-  -fnb.a,
-  -fnb.b/2,
-  0,
-  fnb.b/2,
-  fnb.a,
-  fnb.b,
-  fnb.a,
-  fnb.b/2
-]
+Y = [0, -fnb.b/2, -fnb.a, -fnb.b, -fnb.a, -fnb.b/2,
+     0, fnb.b/2, fnb.a, fnb.b, fnb.a, fnb.b/2]
 ```
 
 Given seed/base `(x0, y0)` and index list `indices`, the returned polygon is:
@@ -63,9 +39,21 @@ for index in indices:
     out.append(y0)
 ```
 
-The native caller passes byte `9`; any other byte returns null. This is an exact recovered coordinate-generation operator, not an inference.
+The native caller passes byte `9`; any other byte returns null. This is an exact recovered coordinate-generation operator.
 
-## Resolved `jba.a` procedural geometry operator
+## Roblox implementation
+
+`Shared/Combat/NativeComponentGeometry.luau` now exposes the exact `UcaTransform` operator using native 0-based indices and `fnb.a/fnb.b` dimensions. It also exposes the completely resolved slot-30 constructor and records the exact procedural call contracts without inventing unresolved generator semantics.
+
+Slot 30 resolves to:
+
+```text
+[2217, 0, -2217, 2560, -2217, -2560]
+```
+
+with native offset `-2217` and `wfb.a=2`.
+
+## Procedural `jba.a` contract
 
 Signature:
 
@@ -73,63 +61,9 @@ Signature:
 jba.a(int[][] outlines, long seed, int mode, Random random, int variation, long scale)
 ```
 
-Exact recovered behavior:
+Recovered call families:
 
-1. If `outlines` is non-null, use its first outline as the starting polygon and rotate its vertex-pair ordering by moving the final pair to the front repeatedly.
-2. Every coordinate in the starting outline is arithmetic-right-shifted by 4 (native `/16` integer scaling).
-3. If no outline is supplied, generate a starting polygon from `tka.a(seed, 55, scale, mode, random)`.
-4. Allocate three outline layers in the resulting `wfb`.
-5. For each of three generated layers, call `tka.a(seed, 55, scale*(2/(layer+2)), mode, per-layer Random)`.
-6. Left-shift the generated coordinates by 4 before applying the layer offset.
-7. Apply deterministic per-layer offsets derived from the random seed and `scale`.
-8. For each vertex, run the native `fra.a(previousLayer, y, x)` collision/validity predicate. If the predicate fails, contract the offending coordinate pair by the native integer factor encoded as `*200 >> constant`.
-9. Store all three generated outlines in `wfb.w`.
-10. Set `wfb.m=true`, `wfb.k=false`, `wfb.B=16`, `wfb.r=true`, and apply native parameter `wfb.a(121,8)` before returning.
-
-This establishes that slots using `jba.a(...)` are **procedurally generated native geometry**, not static polygons that should be replaced with guessed fixed shapes.
-
-## Generated slot call sites recovered
-
-### Slot 30
-Direct constructor already recovered:
-
-```text
-new wfb([n6,0,-n6,n5,-n6,-n5], -n6, 0)
-```
-
-where the native initialization resolves `n6 = 2217` and `n5 = 2560` from `fnb.a=4434`, `fnb.b=5120` and the native sine initialization. Result:
-
-```text
-[2217,0,-2217,2560,-2217,-2560]
-```
-
-with native offset `-2217` and `wfb.a=2`.
-
-### Slots 31–41
-The `wlb.f(byte)` body has now been recovered far enough to establish that these are native definition objects built from the shared `uca.a` transform and `fnb.a/fnb.b` chassis dimensions, with definition-specific hardpoint/parameter attachments. They must be represented as generated definitions rather than flattened guesses.
-
-Their native definition-table references remain:
-
-```text
-31 -> wfb3
-32 -> object
-33 -> object
-34 -> object2
-35 -> object
-36 -> object
-37 -> object
-38 -> object
-39 -> object
-40 -> object
-41 -> object
-```
-
-The source construction bodies are in the preserved `wlb` disassembly and use the exact `uca.a` operator documented above.
-
-### Procedural slots 48–55
-The exact `jba.a` call parameter families recovered from `wlb.f(byte)` are:
-
-| Slot | seed | mode | variation argument | scale |
+| Slot | seed | mode | variation | scale |
 |---:|---:|---:|---|---:|
 | 48 | `1000L` | `12` | `mgb.a(iload_0,47)` | `2500L` |
 | 49 | `1000L` | `12` | `mgb.a(iload_0,61)` | `2500L` |
@@ -139,11 +73,17 @@ The exact `jba.a` call parameter families recovered from `wlb.f(byte)` are:
 | 54 | `1500L` | `12` | `123` | `3000L` |
 | 55 | `250L` | `10` | `mgb.a(iload_0,-108)` | `625L` |
 
-The first argument for each call is a native `int[][]` outline seed constructed immediately before the call. Those outlines are preserved in the disassembly and are intentionally not flattened here until the complete call-chain is represented.
+The native implementation produces three generated outline layers, applies native coordinate scaling/offsets, validates vertices through `fra.a`, stores the layers in `wfb.w`, and sets the recovered generated-object flags/parameter. These semantics must not be replaced with guessed fixed polygons.
+
+## Remaining slot construction work
+
+Slots 31–41 are native definition objects built from the shared `uca.a` transform and `fnb.a/fnb.b` chassis dimensions, with definition-specific attachments. Their construction bodies still need to be translated into the canonical Roblox component representation without flattening those attachments.
+
+Slots 48–55 additionally require exact `mgb` and `tka` semantics before runtime generation can be completed. The native `int[][]` outline seed arrays immediately preceding each call also remain to be represented exactly.
 
 ## Implementation consequence
 
-The Roblox port should expose the native geometry generators as deterministic source operators, not invent replacement geometry. The correct implementation boundary is:
+Correct boundary:
 
 ```text
 native fnb dimensions
@@ -153,7 +93,7 @@ native fnb dimensions
     -> Roblox component definition
 ```
 
-and for procedural definitions:
+Procedural:
 
 ```text
 native outline seed
@@ -165,6 +105,6 @@ native outline seed
 Do not use bounding-box dimensions or `Part.Size` as substitutes.
 
 ## Status
-`PARTIAL / SOURCE-RECOVERY ACTIVE`
+`PARTIAL / IMPLEMENTATION ADVANCED`
 
-The major shared coordinate and procedural operators are now source-recovered. Remaining work is to translate the recovered slot-specific construction bodies into the canonical Roblox component representation and to recover any unresolved `mgb`/`tka` semantics needed for exact runtime generation.
+The exact shared coordinate operator and resolved slot-30 constructor are implemented. Exact procedural call contracts are represented without inventing unresolved behavior. Remaining work is slot-specific construction for 31–41, exact outline seeds for 48–55, and source recovery of `mgb`/`tka` semantics needed for runtime procedural generation.
