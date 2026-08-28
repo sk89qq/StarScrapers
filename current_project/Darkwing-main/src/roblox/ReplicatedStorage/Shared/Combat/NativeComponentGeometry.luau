@@ -10,6 +10,14 @@ export type Dimensions = {
 	b: number, -- native fnb.b
 }
 
+export type ProceduralSlotSpec = {
+	seed: number,
+	mode: number,
+	variationKind: "MGB" | "INDEX_PLUS" | "CONSTANT",
+	variation: number,
+	scale: number,
+}
+
 local function buildOffsets(dimensions: Dimensions): ({number}, {number})
 	local a = dimensions.a
 	local b = dimensions.b
@@ -50,7 +58,7 @@ end
 
 -- Exact native uca.a transform for its required byte selector (9).
 -- Input indices are the native path/index sequence. The returned array is
--- alternating integer x/y coordinates and begins with the supplied origin.
+-- alternating x/y coordinates and begins with the supplied origin.
 function NativeComponentGeometry.UcaTransform(
 	dimensions: Dimensions,
 	originX: number,
@@ -71,6 +79,38 @@ function NativeComponentGeometry.UcaTransform(
 	end
 
 	return out
+end
+
+-- Slot 30 is a generated-expression in the native table, but its constructor
+-- inputs are completely resolved. Keep it as an explicit source-derived shape
+-- rather than routing it through the procedural generator.
+function NativeComponentGeometry.Slot30(): {number}
+	return { 2217, 0, -2217, 2560, -2217, -2560 }
+end
+
+-- Exact jba.a call contracts recovered from wlb.f(byte). These describe the
+-- native generator invocation without pretending that unresolved mgb/tka/fra
+-- semantics are known. `variation` is either a constant or the second operand
+-- of mgb.a(index, operand); INDEX_PLUS means iload_0 + variation.
+function NativeComponentGeometry.GetProceduralSlotSpec(
+	slot: number
+): ProceduralSlotSpec?
+	if slot == 48 then
+		return { seed = 1000, mode = 12, variationKind = "MGB", variation = 47, scale = 2500 }
+	elseif slot == 49 then
+		return { seed = 1000, mode = 12, variationKind = "MGB", variation = 61, scale = 2500 }
+	elseif slot == 50 then
+		return { seed = 500, mode = 12, variationKind = "INDEX_PLUS", variation = 45, scale = 1250 }
+	elseif slot == 52 then
+		return { seed = 500, mode = 12, variationKind = "MGB", variation = -10, scale = 1250 }
+	elseif slot == 53 then
+		return { seed = 1500, mode = 12, variationKind = "CONSTANT", variation = -127, scale = 3000 }
+	elseif slot == 54 then
+		return { seed = 1500, mode = 12, variationKind = "CONSTANT", variation = 123, scale = 3000 }
+	elseif slot == 55 then
+		return { seed = 250, mode = 10, variationKind = "MGB", variation = -108, scale = 625 }
+	end
+	return nil
 end
 
 return NativeComponentGeometry
