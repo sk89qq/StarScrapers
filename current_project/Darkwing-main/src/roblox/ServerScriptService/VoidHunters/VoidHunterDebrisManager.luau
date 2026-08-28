@@ -10,8 +10,10 @@ local ServerScriptService = game:GetService("ServerScriptService")
 local Components = require(ReplicatedStorage.VoidHunters:WaitForChild("VoidHunterComponents"))
 local BuilderManager = require(ServerScriptService.VoidHunters:WaitForChild("VoidHunterBuilderManager"))
 local SoundManager = require(ReplicatedStorage.VoidHunters:WaitForChild("VoidHunterSoundManager"))
+local NativeDebrisBoundary = require(ReplicatedStorage.Shared.Physics:WaitForChild("NativeDebrisBoundary"))
+local NativeDebrisPhysics = require(ReplicatedStorage.Shared.Physics:WaitForChild("NativeDebrisPhysics"))
 
-local DEBRIS_LIFESPAN = 30
+local NATIVE = NativeDebrisBoundary.GetConfig()
 local BOB_HEIGHT = 2
 local ROTATION_SPEED = math.rad(180)
 local BOB_FREQUENCY = 2
@@ -50,13 +52,22 @@ local function getPlayerForShip(ship: Model): Player?
 	return Players:GetPlayerByUserId(ownerId)
 end
 
+local function getDebrisMass(definition: any): number
+	local mass = definition.Mass
+	if typeof(mass) == "number" and mass > 0 then
+		return mass
+	end
+	return 1
+end
+
 function DebrisManager.SpawnDebris(
 	position: Vector3,
 	componentType: string,
 	dropChance: number?,
-	initialVelocity: Vector3?
+	initialVelocity: Vector3?,
+	launchOffset: Vector2?
 ): BasePart?
-	if typeof(position) ~= "Vector3" or not position.X == position.X then
+	if typeof(position) ~= "Vector3" or position.X ~= position.X then
 		return nil
 	end
 
@@ -87,6 +98,24 @@ function DebrisManager.SpawnDebris(
 
 	debris:SetAttribute("ComponentType", componentType)
 	debris:SetAttribute("DebrisKind", "Component")
+	debris:SetAttribute("NativeDetachForceMultiplier", NATIVE.DetachForceMultiplier)
+	debris:SetAttribute("NativeBreakingExplosionForceMultiplier", NATIVE.BreakingExplosionForceMultiplier)
+	debris:SetAttribute("NativeSurvives", NATIVE.Survives)
+
+	if launchOffset then
+		local launch = NativeDebrisPhysics.ComputeLaunch(
+			launchOffset,
+			NATIVE.DetachForceMultiplier,
+			getDebrisMass(definition)
+		)
+		debris:SetAttribute("NativeLaunchScale", launch.LaunchScale)
+		debris:SetAttribute("NativeLaunchForceMagnitude", launch.ForceMagnitude)
+		debris:SetAttribute("NativeLaunchAngleUnits", launch.AngleUnits)
+		debris:SetAttribute("NativeLaunchAngleRadians", launch.AngleRadians)
+		debris:SetAttribute("NativeLaunchDirectionX", launch.ForceDirection.X)
+		debris:SetAttribute("NativeLaunchDirectionZ", launch.ForceDirection.Y)
+	end
+
 	if initialVelocity then
 		debris:SetAttribute("InitialVelocityX", initialVelocity.X)
 		debris:SetAttribute("InitialVelocityY", initialVelocity.Y)
@@ -135,17 +164,18 @@ function DebrisManager.SpawnDebris(
 		debris:Destroy()
 	end)
 
-	task.delay(DEBRIS_LIFESPAN, function()
-		if debris.Parent then
-			debris:Destroy()
-		end
-	end)
-
+	-- Native DEBRIS_SURVIVES is an enablement/state input, not evidence for a
+	-- fixed 30-second lifetime. Cleanup is therefore delegated to the lifecycle
+	-- manager instead of presenting the old 30-second value as native timing.
 	return debris
 end
 
 function DebrisManager.IsValidComponentType(componentType: string): boolean
 	return isValidComponentType(componentType)
+end
+
+function DebrisManager.GetNativeConfig()
+	return NativeDebrisBoundary.GetConfig()
 end
 
 return DebrisManager
