@@ -30,17 +30,17 @@ native_slot,source_line,definition_kind,initializer_reference,behavior
 28,186,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{3,-3,3,3,-3,3,-3,-3},0,0)",none
 29,161,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{5,-5,5,5,-5,5,-5,-5},-5,0)",none
 30,222,GENERATED_EXPRESSION,"new wfb(new int[]{n6,0,-n6,n5,-n6,-n5},-n6,0)",none
-31,235,DIRECT_OR_OBJECT_REFERENCE,wfb3,none
-32,243,DIRECT_OR_OBJECT_REFERENCE,object,none
-33,267,DIRECT_OR_OBJECT_REFERENCE,object,none
-34,277,DIRECT_OR_OBJECT_REFERENCE,object2,none
-35,286,DIRECT_OR_OBJECT_REFERENCE,object,none
-36,297,DIRECT_OR_OBJECT_REFERENCE,object,none
-37,258,DIRECT_OR_OBJECT_REFERENCE,object,none
-38,317,DIRECT_OR_OBJECT_REFERENCE,object,none
-39,325,DIRECT_OR_OBJECT_REFERENCE,object,none
-40,251,DIRECT_OR_OBJECT_REFERENCE,object,none
-41,333,DIRECT_OR_OBJECT_REFERENCE,object,none
+31,235,GENERATED_EXPRESSION,"new wfb(new int[]{-n1,-n1,n1,-n1,n1+2*n2,0,n1,n1,-n1,n1},-n1,0) + lsb hardpoints",none
+32,243,GENERATED_EXPRESSION,"ta.a(polyFrom(n1),124,new wfb(polyFrom(n1),-n1,0))",none
+33,267,GENERATED_EXPRESSION,"ta.a(polyFrom(n1,n2),127,new wfb(polyFrom(n1,n2),-n1,0))",none
+34,277,GENERATED_EXPRESSION,"new wfb(uca.a(-b/2,9,new int[]{1,4,7,8,9,10,11,2,5},-b/2),-b/2,0)",none
+35,286,GENERATED_EXPRESSION,"new wfb(uca.a(-b/2,9,new int[]{3,7,8,11,0},-b/2),-b/2,0)",none
+36,297,GENERATED_EXPRESSION,"new wfb(uca.a(0,9,new int[]{2,6,7,10,11},-b/2),-b/2,b/2)",none
+37,258,GENERATED_EXPRESSION,"ta.a(polyFrom(n1,n2),119,new wfb(polyFrom(n1,n2),-n2,0))",none
+38,317,GENERATED_EXPRESSION,"new wfb(uca.a(-b/2,9,new int[]{7,8,9,11,3,2},-b/2),-b/2,-b/2)",none
+39,325,GENERATED_EXPRESSION,"new wfb(uca.a(-b/2,9,new int[]{5,7,9,11,1},-n2),-n2,0)",none
+40,251,GENERATED_EXPRESSION,"new wfb(uca.a(-n2,9,new int[]{3,3,7,9,9,11},n1),-n2,0)",none
+41,333,GENERATED_EXPRESSION,"new wfb(uca.a(-b/2,9,new int[]{5,7,11,7,11,1},-n2),-n2,0)",none
 42,188,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{5,-8,5,8,-5,5,-5,-5},-5,0)",none
 43,193,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{3,-1,3,1,-3,1,-3,-1},-3,0)",weapon=9
 44,197,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{3,-3,3,3,-3,5,-3,-5},-3,0)",weapon=10
