@@ -12,17 +12,22 @@ The original Void Hunters base simulation/cooldown timer operates at **30 ticks 
 - Missile Launcher cooldown state: **120 ticks = 4.0 s**.
 - Both independently establish the same **30 ticks/second** ratio.
 
-## Scope
+## Relationship to the native gameplay timer
 
-This is a separate clock from the native gameplay timing unit `l`.
+The game uses the 30 Hz simulation cadence as the underlying update loop. The native gameplay unit `l` is a separate **gameplay duration representation**, not a second independently running wall clock.
 
 - `l` timing: **1l = 1.0 s**.
-- Base simulation timer: **30 Hz**.
+- Base simulation cadence: **30 Hz**.
+- Therefore a duration represented as `N*l` can be realized over **30N simulation ticks** when scheduled through the base tick loop.
 
-Do not convert weapon `RELOAD`, `AIMSPEED`, or other raw configuration fields directly using either clock until the native consumer/counter path establishes which clock and transformation the field uses.
+This distinction matters: `l` is a semantic/gameplay timing unit, while 30 Hz is the cadence at which simulation state is updated. They must not be treated as competing clocks or as evidence of separate weapon/game threads.
 
-The cooldown-state values above are timer-array/counter values, not necessarily the raw values stored in weapon configuration records. In particular, raw weapon `RELOAD` values must remain distinct from observed cooldown-state counters until their assignment path is traced.
+## Weapon timing scope
+
+Weapon cooldowns and firing state can be represented by counters advanced by the common 30 Hz simulation loop. Weapon configuration fields such as `RELOAD`, `AIMSPEED`, `PULSETIME`, and `PULSE_FADETIME` are **not interchangeable** with the cooldown counter and must be traced through their consumer/assignment path.
+
+The observed cooldown-state values above are timer-array/counter values, not necessarily the raw values stored in weapon configuration records.
 
 ## Implementation rule
 
-Use 30 Hz only for counters proven to belong to the base simulation/cooldown timer layer. Do not replace the authoritative `l` conversion with 30 Hz.
+Use 30 Hz only for counters proven to belong to the base simulation/cooldown timer layer. Use the calibrated `l` boundary for native `N*l` gameplay durations. Do not introduce a 0.02-second / 50 Hz interpretation for `l`.
