@@ -7,40 +7,47 @@ The base weapon cooldown/state-counter layer runs on the authoritative **30 Hz s
 - 30 ticks = 1 second
 - 1 tick = 33.333... ms
 
-## Empirical definitive anchors
-
-- Bomblet Spray cooldown state: **24 ticks = 0.8 seconds**.
-- Missile Launcher cooldown state: **120 ticks = 4.0 seconds**.
-
-These establish the common 30 Hz counter-to-time conversion.
-
 ## Native gameplay duration unit
 
 Separately, native `l` timing is definitive at **1l = 1 second**. `N*l` values therefore represent `N` seconds and may be scheduled through the 30 Hz simulation cadence.
 
-## Resolved weapon timing observations
+## Weapon field semantics — definitive
 
-| Weapon/system | Native observed counter | Real duration | Resolution |
-|---|---:|---:|---|
-| Bomblet Spray cooldown | 24 ticks | 0.8 s | DEFINITIVE |
-| Missile Launcher cooldown | 120 ticks | 4.0 s | DEFINITIVE |
-| Laser continuous firing burst | — | 1.5 s | OBSERVED; consumer mapping pending |
-| Laser recovery/cooldown | — | 2.0 s | OBSERVED; consumer mapping pending |
-| Torpedo reload/observed cooldown | — | 3.0 s | OBSERVED; native assignment mapping pending |
+`AIMSPEED` is an **angular aiming/traverse speed**, not a fire-rate/reload clock.
 
-## Important field distinction
+`AIMARC` is the corresponding angular aiming envelope/limit.
 
-`RELOAD` and `AIMSPEED` are separate native configuration fields. They must not be assumed to be the same timer. `RELOAD` may feed a cooldown/state counter while `AIMSPEED` participates in firing/aim cadence. Laser having `RELOAD=0` while `AIMSPEED=8` is direct evidence that these fields have distinct semantics.
+The recovered weapon set provides the behavioral proof: every module with `AIMSPEED = 0` is a **non-pivoting/fixed weapon module**, while pivoting weapon modules have nonzero `AIMSPEED` values. Therefore `AIMSPEED = 0` means no weapon pivot/traverse, rather than zero shots-per-second.
 
-Likewise, the raw weapon configuration values (for example Bomblet `RELOAD=50` and Torpedo `RELOAD=200`) are not to be treated as the observed cooldown counters until the native assignment/consumer path is verified.
+The native angular representation is standardized and the values are represented in the established fixed-point/angular scale. Do not reinterpret `AIMSPEED` as another time unit.
+
+`RELOAD` remains the weapon re-arm/cooldown input and is separate from `AIMSPEED`.
+
+`PULSETIME` and `PULSE_FADETIME` remain pulse-state inputs and are separate from both reload and aim traversal.
+
+## Definitive cooldown observations
+
+- Bomblet Spray cooldown state: **24 ticks = 0.8 seconds**.
+- Missile Launcher cooldown state: **120 ticks = 4.0 seconds**.
+- Laser continuous firing burst: **1.5 seconds observed**.
+- Laser recovery/cooldown: **2.0 seconds observed**.
+- Torpedo reload/observed cooldown: **3.0 seconds observed**.
+
+The first two establish the common 30 Hz counter-to-time conversion. The latter observations are behavioral anchors; their native assignment paths remain separate from the clock definition.
+
+## Field-to-timer rule
+
+The correct architecture is:
+
+`native weapon configuration -> weapon state/timer assignment -> 30 Hz simulation counter -> elapsed time`
+
+Do not assume the raw integer stored in `RELOAD` is itself the final cooldown counter. The native consumer/assignment may transform it first.
 
 ## Derived 30 Hz values
 
 For any value proven to be a base simulation timer counter:
 
 `seconds = ticks / 30`
-
-Examples:
 
 - 15 ticks = 0.5 s
 - 24 ticks = 0.8 s
@@ -50,5 +57,3 @@ Examples:
 - 90 ticks = 3.0 s
 - 120 ticks = 4.0 s
 - 150 ticks = 5.0 s
-
-These conversions are definitive once the value is established as a base simulation counter.
