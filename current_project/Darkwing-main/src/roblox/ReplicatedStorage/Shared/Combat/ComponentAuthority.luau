@@ -60,17 +60,14 @@ local function readHealth(definition: any): number
 	if type(definition) ~= "table" then
 		return 0
 	end
-
 	local hp = definition.HP
 	if typeof(hp) == "number" and hp >= 0 then
 		return hp
 	end
-
 	local maxHp = definition.MaxHP
 	if typeof(maxHp) == "number" and maxHp >= 0 then
 		return maxHp
 	end
-
 	return 0
 end
 
@@ -78,7 +75,6 @@ local function isInvalidParent(part: BasePart, parentPart: BasePart): boolean
 	if part == parentPart then
 		return true
 	end
-
 	local cursor = parentPart
 	local visited: { [BasePart]: boolean } = {}
 	while cursor do
@@ -86,7 +82,6 @@ local function isInvalidParent(part: BasePart, parentPart: BasePart): boolean
 			return true
 		end
 		visited[cursor] = true
-
 		local state = states[cursor]
 		if not state then
 			break
@@ -96,7 +91,6 @@ local function isInvalidParent(part: BasePart, parentPart: BasePart): boolean
 		end
 		cursor = state.ParentPart
 	end
-
 	return false
 end
 
@@ -118,7 +112,6 @@ function ComponentAuthority.Bind(part: BasePart, explicitTypeName: string?): Com
 	if not part or not part:IsA("BasePart") then
 		return nil
 	end
-
 	local typeName = explicitTypeName
 	local definition
 	if typeName then
@@ -126,11 +119,9 @@ function ComponentAuthority.Bind(part: BasePart, explicitTypeName: string?): Com
 	else
 		typeName, definition = findDefinition(part)
 	end
-
 	if typeof(typeName) ~= "string" or type(typeName) ~= "string" or type(definition) ~= "table" then
 		return nil
 	end
-
 	local existing = states[part]
 	if existing then
 		if existing.TypeName ~= typeName then
@@ -138,7 +129,6 @@ function ComponentAuthority.Bind(part: BasePart, explicitTypeName: string?): Com
 		end
 		return existing
 	end
-
 	local maxHealth = readHealth(definition)
 	local existingBaseColor = part:GetAttribute("BaseColor")
 	local baseColor = typeof(existingBaseColor) == "Color3" and existingBaseColor or part.Color
@@ -163,7 +153,6 @@ function ComponentAuthority.Bind(part: BasePart, explicitTypeName: string?): Com
 		BoundPart = part,
 		BaseColor = baseColor,
 	}
-
 	part:SetAttribute("ComponentId", state.Id)
 	part:SetAttribute("ComponentType", state.TypeName)
 	part:SetAttribute("ComponentHealth", state.Health)
@@ -192,22 +181,18 @@ local function updateVisual(state: ComponentState)
 	if not part or not part.Parent then
 		return
 	end
-
 	local maxHealth = math.max(state.MaxHealth, 1)
 	local fraction = math.clamp(state.Health / maxHealth, 0, 1)
 	state.Critical = fraction > 0 and fraction <= 0.15
-
 	if state.Destroyed then
 		part:SetAttribute("ComponentState", "Destroyed")
 		part:SetAttribute("ComponentHealth", 0)
 		part:SetAttribute("ComponentMaxHealth", state.MaxHealth)
 		return
 	end
-
 	part:SetAttribute("ComponentState", state.Critical and "Critical" or (fraction < 1 and "Damaged" or "Healthy"))
 	part:SetAttribute("ComponentHealth", state.Health)
 	part:SetAttribute("ComponentMaxHealth", state.MaxHealth)
-
 	local damage = 1 - fraction
 	part.Color = state.BaseColor:Lerp(Color3.fromRGB(255, 30, 30), damage)
 end
@@ -220,7 +205,6 @@ function ComponentAuthority.SetHealth(part: BasePart, health: number): Component
 	if typeof(health) ~= "number" or health ~= health or health == math.huge or health == -math.huge then
 		return nil
 	end
-
 	state.Health = math.clamp(health, 0, state.MaxHealth)
 	state.Destroyed = state.Health <= 0
 	updateVisual(state)
@@ -235,7 +219,6 @@ function ComponentAuthority.ApplyDamage(part: BasePart, damage: number): (Compon
 	if typeof(damage) ~= "number" or damage <= 0 or damage ~= damage or damage == math.huge or damage == -math.huge then
 		return state, false
 	end
-
 	state.Health = math.max(0, state.Health - damage)
 	local destroyed = state.Health <= 0
 	state.Destroyed = destroyed
@@ -248,7 +231,6 @@ function ComponentAuthority.Repair(part: BasePart, amount: number): (ComponentSt
 	if not state or typeof(amount) ~= "number" or amount <= 0 or amount ~= amount or amount == math.huge or state.Destroyed then
 		return state, 0
 	end
-
 	local before = state.Health
 	state.Health = math.min(state.MaxHealth, state.Health + amount)
 	updateVisual(state)
@@ -271,31 +253,26 @@ function ComponentAuthority.SetParent(part: BasePart, parentPart: BasePart?): Co
 	if not state then
 		return nil
 	end
-
 	if parentPart then
 		if not parentPart:IsA("BasePart") then
 			return nil
 		end
-
 		local parentState = states[parentPart] or ComponentAuthority.Bind(parentPart)
 		if not parentState or isInvalidParent(part, parentPart) then
 			return nil
 		end
-
 		if state.ParentPart == parentPart then
 			state.ParentId = parentState.Id
 			part:SetAttribute("ParentComponentId", state.ParentId)
 			parentState.Children[state.Id] = state.Id
 			return state
 		end
-
 		if state.ParentPart then
 			local oldParentState = states[state.ParentPart]
 			if oldParentState then
 				removeChildReference(oldParentState, state)
 			end
 		end
-
 		state.ParentId = parentState.Id
 		state.ParentPart = parentPart
 		parentState.Children[state.Id] = state.Id
@@ -306,11 +283,9 @@ function ComponentAuthority.SetParent(part: BasePart, parentPart: BasePart?): Co
 				removeChildReference(oldParentState, state)
 			end
 		end
-
 		state.ParentId = nil
 		state.ParentPart = nil
 	end
-
 	part:SetAttribute("ParentComponentId", state.ParentId)
 	return state
 end
@@ -320,18 +295,28 @@ function ComponentAuthority.Clear(part: BasePart)
 	if not state then
 		return
 	end
-
 	if state.ParentPart then
 		local parentState = states[state.ParentPart]
 		if parentState then
 			removeChildReference(parentState, state)
 		end
 	end
-
 	for childId in pairs(state.Children) do
+		local childIdValue = childId
+		local childState: ComponentState? = nil
+		for candidatePart, candidateState in pairs(states) do
+			if candidateState.Id == childIdValue then
+				childState = candidateState
+				if childState.ParentPart == part then
+					childState.ParentPart = nil
+					childState.ParentId = nil
+					candidatePart:SetAttribute("ParentComponentId", nil)
+				end
+				break
+			end
+		end
 		state.Children[childId] = nil
 	end
-
 	state.ParentPart = nil
 	state.ParentId = nil
 	part:SetAttribute("ParentComponentId", nil)
