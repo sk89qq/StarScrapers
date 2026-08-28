@@ -1,7 +1,7 @@
 native_slot,source_line,definition_kind,initializer_reference,behavior
 0,104,DIRECT_OR_OBJECT_REFERENCE,wfb2,none
 1,106,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{40,0,0,40,-40,0,0,-40},0,0)",none
-2,113,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{10,0,0,10,-10,0,-10,0},0,0)",none
+2,113,DIRECT_OR_OBJECT_REFERENCE,"new wfb(new int[]{10,0,0,10,-10,0,0,-10},0,0)",none
 3,369,DIRECT_OR_OBJECT_REFERENCE,object,none
 4,383,DIRECT_OR_OBJECT_REFERENCE,object,none
 5,393,DIRECT_OR_OBJECT_REFERENCE,object,none
