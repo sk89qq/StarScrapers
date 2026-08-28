@@ -5,6 +5,9 @@
 	Single implementation-facing boundary for grapple inputs recovered from the
 	original native registry. Values remain in raw native units. Generic rope
 	constraint/physics behavior belongs to Roblox/the replacement physics layer.
+
+	Timing calibration: native shared unit l = 1.0 second. This is a gameplay
+	timing unit, not a simulation-frame duration.
 ]=]
 
 local NativeGameplayConfig = require(script.Parent.NativeGameplayConfig)
@@ -48,7 +51,7 @@ local CONFIG: Config = {
 	GRAPPLE_DEBRIS = read("GRAPPLE_DEBRIS"),
 	PHYSICS_COLLISION_GRAPPLING_HOOK_FORCE_MULTIPLIER = read("PHYSICS_COLLISION_GRAPPLING_HOOK_FORCE_MULTIPLIER"),
 	GRAPPLING_HOOKS_DAMAGEABLE_BY_SOURCE_PLAYER = read("GRAPPLING_HOOKS_DAMAGEABLE_BY_SOURCE_PLAYER"),
-	NativeTickSeconds = 0.02,
+	NativeTickSeconds = 1.0,
 }
 
 function NativeGrappleBoundary.GetConfig(): Config
