@@ -1,0 +1,277 @@
+final class ta {
+  static dja a;
+    descriptor: Ldja;
+
+  static int[] b;
+    descriptor: [I
+
+  static final void a(byte, int);
+    descriptor: (BI)V
+    Code:
+       0: getstatic     #17                 // Field maa.o:I
+       3: putstatic     #21                 // Field wp.a:I
+       6: iload_0
+       7: bipush        -101
+       9: if_icmple     21
+      12: bipush        -35
+      14: invokestatic  #24                 // Method a:(B)V
+      17: goto          21
+      20: athrow
+      21: iload_1
+      22: putstatic     #27                 // Field pw.a:I
+      25: goto          67
+      28: astore_2
+      29: aload_2
+      30: new           #29                 // class java/lang/StringBuilder
+      33: dup
+      34: invokespecial #33                 // Method java/lang/StringBuilder."<init>":()V
+      37: ldc           #35                 // String ta.A(
+      39: invokevirtual #39                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      42: iload_0
+      43: invokevirtual #42                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      46: bipush        44
+      48: invokevirtual #45                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      51: iload_1
+      52: invokevirtual #42                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      55: bipush        41
+      57: invokevirtual #45                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      60: invokevirtual #49                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      63: invokestatic  #54                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      66: athrow
+      67: return
+    Exception table:
+       from    to  target type
+           0    25    28   Class java/lang/RuntimeException
+           0    17    20   Class java/lang/RuntimeException
+
+  public static void a(byte);
+    descriptor: (B)V
+    Code:
+       0: aconst_null
+       1: putstatic     #56                 // Field a:Ldja;
+       4: aconst_null
+       5: putstatic     #58                 // Field b:[I
+       8: iload_0
+       9: bipush        -109
+      11: if_icmpeq     21
+      14: aconst_null
+      15: checkcast     #59                 // class "[I"
+      18: putstatic     #58                 // Field b:[I
+      21: goto          54
+      24: astore_1
+      25: aload_1
+      26: new           #29                 // class java/lang/StringBuilder
+      29: dup
+      30: invokespecial #33                 // Method java/lang/StringBuilder."<init>":()V
+      33: ldc           #61                 // String ta.B(
+      35: invokevirtual #39                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      38: iload_0
+      39: invokevirtual #42                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      42: bipush        41
+      44: invokevirtual #45                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      47: invokevirtual #49                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      50: invokestatic  #54                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      53: athrow
+      54: return
+    Exception table:
+       from    to  target type
+           0    21    24   Class java/lang/RuntimeException
+
+  static final void a(int[], int, wfb);
+    descriptor: ([IILwfb;)V
+    Code:
+       0: getstatic     #67                 // Field VoidHunters.G:I
+       3: istore        20
+       5: iload_1
+       6: bipush        113
+       8: if_icmpgt     12
+      11: return
+      12: iconst_0
+      13: istore_3
+      14: iload_3
+      15: iconst_m1
+      16: ixor
+      17: aload_0
+      18: arraylength
+      19: iconst_m1
+      20: ixor
+      21: if_icmple     237
+      24: aload_0
+      25: iload_3
+      26: iaload
+      27: istore        4
+      29: aload_0
+      30: iconst_1
+      31: iload_3
+      32: iadd
+      33: iaload
+      34: istore        5
+      36: aload_0
+      37: iconst_2
+      38: iload_3
+      39: iadd
+      40: aload_0
+      41: arraylength
+      42: irem
+      43: iaload
+      44: istore        6
+      46: aload_0
+      47: iload_3
+      48: bipush        -3
+      50: isub
+      51: aload_0
+      52: arraylength
+      53: irem
+      54: iaload
+      55: istore        7
+      57: iload         6
+      59: iload         4
+      61: iadd
+      62: iconst_2
+      63: idiv
+      64: istore        8
+      66: iload         5
+      68: iload         7
+      70: ineg
+      71: isub
+      72: iconst_2
+      73: idiv
+      74: istore        9
+      76: iload         6
+      78: iload         4
+      80: isub
+      81: istore        10
+      83: iload         5
+      85: ineg
+      86: iload         7
+      88: iadd
+      89: istore        11
+      91: iload         11
+      93: istore        12
+      95: iload         10
+      97: ineg
+      98: istore        13
+     100: iload         13
+     102: bipush        -77
+     104: iload         12
+     106: invokestatic  #72                 // Method ecb.a:(IBI)I
+     109: istore        14
+     111: iconst_1
+     112: istore        15
+     114: iload         20
+     116: ifne          310
+     119: aload_2
+     120: getfield      #76                 // Field wfb.b:I
+     123: ifne          148
+     126: goto          130
+     129: athrow
+     130: iconst_m1
+     131: aload_2
+     132: getfield      #79                 // Field wfb.i:I
+     135: iconst_m1
+     136: ixor
+     137: if_icmpne     148
+     140: goto          144
+     143: athrow
+     144: goto          201
+     147: athrow
+     148: aload_2
+     149: getfield      #76                 // Field wfb.b:I
+     152: iload         8
+     154: isub
+     155: istore        16
+     157: aload_2
+     158: getfield      #79                 // Field wfb.i:I
+     161: iload         9
+     163: isub
+     164: istore        17
+     166: iload         16
+     168: bipush        119
+     170: iload         17
+     172: invokestatic  #82                 // Method ar.a:(IBI)I
+     175: istore        18
+     177: iload         10
+     179: bipush        117
+     181: iload         11
+     183: invokestatic  #82                 // Method ar.a:(IBI)I
+     186: istore        19
+     188: iload         18
+     190: iload         19
+     192: ldc           #83                 // int 1754395553
+     194: ishr
+     195: if_icmpge     201
+     198: iconst_0
+     199: istore        15
+     201: iload         15
+     203: ifne          210
+     206: goto          229
+     209: athrow
+     210: aload_2
+     211: bipush        -124
+     213: new           #85                 // class lsb
+     216: dup
+     217: iload         8
+     219: iload         9
+     221: iload         14
+     223: invokespecial #88                 // Method lsb."<init>":(III)V
+     226: invokevirtual #91                 // Method wfb.a:(ILlsb;)V
+     229: iinc          3, 2
+     232: iload         20
+     234: ifeq          14
+     237: goto          310
+     240: astore_3
+     241: aload_3
+     242: new           #29                 // class java/lang/StringBuilder
+     245: dup
+     246: invokespecial #33                 // Method java/lang/StringBuilder."<init>":()V
+     249: ldc           #93                 // String ta.C(
+     251: invokevirtual #39                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     254: aload_0
+     255: ifnull        264
+     258: ldc           #95                 // String {...}
+     260: goto          266
+     263: athrow
+     264: ldc           #97                 // String null
+     266: invokevirtual #39                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     269: bipush        44
+     271: invokevirtual #45                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     274: iload_1
+     275: invokevirtual #42                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     278: bipush        44
+     280: invokevirtual #45                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     283: aload_2
+     284: ifnull        293
+     287: ldc           #95                 // String {...}
+     289: goto          295
+     292: athrow
+     293: ldc           #97                 // String null
+     295: invokevirtual #39                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     298: bipush        41
+     300: invokevirtual #45                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     303: invokevirtual #49                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     306: invokestatic  #54                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+     309: athrow
+     310: return
+    Exception table:
+       from    to  target type
+           5    11   240   Class java/lang/RuntimeException
+         201   209   209   Class java/lang/RuntimeException
+         131   147   147   Class java/lang/RuntimeException
+         120   140   143   Class java/lang/RuntimeException
+         114   126   129   Class java/lang/RuntimeException
+          12   237   240   Class java/lang/RuntimeException
+         266   292   292   Class java/lang/RuntimeException
+         241   263   263   Class java/lang/RuntimeException
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: new           #100                // class lka
+       3: dup
+       4: invokespecial #101                // Method lka."<init>":()V
+       7: putstatic     #56                 // Field a:Ldja;
+      10: sipush        256
+      13: newarray       int
+      15: putstatic     #58                 // Field b:[I
+      18: return
+}

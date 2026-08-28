@@ -1,0 +1,117 @@
+final class ou extends rqa {
+  static java.lang.String o;
+    descriptor: Ljava/lang/String;
+
+  static int r;
+    descriptor: I
+
+  static java.lang.String p;
+    descriptor: Ljava/lang/String;
+
+  static int q;
+    descriptor: I
+
+  final nc a(nc[], int);
+    descriptor: ([Lnc;I)Lnc;
+    Code:
+       0: sipush        217
+       3: bipush        62
+       5: aload_1
+       6: iconst_0
+       7: aaload
+       8: bipush        99
+      10: invokevirtual #19                 // Method nc.a:(I)I
+      13: invokestatic  #24                 // Method si.a:(III)V
+      16: iload_2
+      17: bipush        -119
+      19: if_icmple     27
+      22: aconst_null
+      23: checkcast     #16                 // class nc
+      26: areturn
+      27: new           #16                 // class nc
+      30: dup
+      31: ldc           #26                 // String void
+      33: invokespecial #30                 // Method nc."<init>":(Ljava/lang/Object;)V
+      36: areturn
+      37: astore_3
+      38: aload_3
+      39: new           #32                 // class java/lang/StringBuilder
+      42: dup
+      43: invokespecial #35                 // Method java/lang/StringBuilder."<init>":()V
+      46: ldc           #37                 // String ou.A(
+      48: invokevirtual #41                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      51: aload_1
+      52: ifnull        61
+      55: ldc           #43                 // String {...}
+      57: goto          63
+      60: athrow
+      61: ldc           #45                 // String null
+      63: invokevirtual #41                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      66: bipush        44
+      68: invokevirtual #48                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      71: iload_2
+      72: invokevirtual #51                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      75: bipush        41
+      77: invokevirtual #48                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      80: invokevirtual #55                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      83: invokestatic  #60                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      86: athrow
+    Exception table:
+       from    to  target type
+           0    26    37   Class java/lang/RuntimeException
+          27    36    37   Class java/lang/RuntimeException
+          38    60    60   Class java/lang/RuntimeException
+
+  ou(java.lang.String, java.lang.Class[], java.lang.String);
+    descriptor: (Ljava/lang/String;[Ljava/lang/Class;Ljava/lang/String;)V
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokespecial #63                 // Method rqa."<init>":(Ljava/lang/String;[Ljava/lang/Class;Ljava/lang/String;)V
+       7: return
+
+  public static void e(byte);
+    descriptor: (B)V
+    Code:
+       0: iload_0
+       1: bipush        -33
+       3: if_icmpeq     7
+       6: return
+       7: aconst_null
+       8: putstatic     #67                 // Field o:Ljava/lang/String;
+      11: aconst_null
+      12: putstatic     #69                 // Field p:Ljava/lang/String;
+      15: goto          48
+      18: astore_1
+      19: aload_1
+      20: new           #32                 // class java/lang/StringBuilder
+      23: dup
+      24: invokespecial #35                 // Method java/lang/StringBuilder."<init>":()V
+      27: ldc           #71                 // String ou.B(
+      29: invokevirtual #41                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      32: iload_0
+      33: invokevirtual #51                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      36: bipush        41
+      38: invokevirtual #48                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      41: invokevirtual #55                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      44: invokestatic  #60                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      47: athrow
+      48: return
+    Exception table:
+       from    to  target type
+           0     6    18   Class java/lang/RuntimeException
+           7    15    18   Class java/lang/RuntimeException
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: ldc           #74                 // String Combat mode in <%0>
+       2: putstatic     #67                 // Field o:Ljava/lang/String;
+       5: bipush        8
+       7: putstatic     #76                 // Field r:I
+      10: ldc           #78                 // String Waiting for sound effects
+      12: putstatic     #69                 // Field p:Ljava/lang/String;
+      15: return
+}

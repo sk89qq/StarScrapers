@@ -1,0 +1,87 @@
+final class lsb {
+  int c;
+    descriptor: I
+
+  int a;
+    descriptor: I
+
+  int b;
+    descriptor: I
+
+  static final void a(boolean);
+    descriptor: (Z)V
+    Code:
+       0: iload_0
+       1: iconst_1
+       2: if_icmpeq     6
+       5: return
+       6: bipush        -48
+       8: invokestatic  #17                 // Method kva.d:(B)V
+      11: goto          44
+      14: astore_1
+      15: aload_1
+      16: new           #19                 // class java/lang/StringBuilder
+      19: dup
+      20: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      23: ldc           #25                 // String lsb.A(
+      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      28: iload_0
+      29: invokevirtual #32                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+      32: bipush        41
+      34: invokevirtual #35                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      37: invokevirtual #39                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      40: invokestatic  #44                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      43: athrow
+      44: return
+    Exception table:
+       from    to  target type
+           0     5    14   Class java/lang/RuntimeException
+           6    11    14   Class java/lang/RuntimeException
+
+  lsb(int, int, int);
+    descriptor: (III)V
+    Code:
+       0: aload_0
+       1: invokespecial #46                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iload_2
+       6: putfield      #48                 // Field c:I
+       9: aload_0
+      10: iload_1
+      11: putfield      #50                 // Field b:I
+      14: aload_0
+      15: iload_3
+      16: putfield      #52                 // Field a:I
+      19: goto          72
+      22: astore        4
+      24: aload         4
+      26: new           #19                 // class java/lang/StringBuilder
+      29: dup
+      30: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      33: ldc           #54                 // String lsb.<init>(
+      35: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      38: iload_1
+      39: invokevirtual #57                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      42: bipush        44
+      44: invokevirtual #35                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      47: iload_2
+      48: invokevirtual #57                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      51: bipush        44
+      53: invokevirtual #35                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      56: iload_3
+      57: invokevirtual #57                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      60: bipush        41
+      62: invokevirtual #35                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      65: invokevirtual #39                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      68: invokestatic  #44                 // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      71: athrow
+      72: return
+    Exception table:
+       from    to  target type
+           4    19    22   Class java/lang/RuntimeException
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: return
+}

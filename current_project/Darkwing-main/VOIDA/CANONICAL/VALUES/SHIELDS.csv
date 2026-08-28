@@ -1,0 +1,7 @@
+# Current canonical subsystem view. Values originate from NATIVE_ENGINE_INPUTS.csv; do not edit independently.
+configuration_key,native_holder,native_default_expression,resolved_default,source_status,implementation_role
+SHIELDS_TOGGLE_COOLDOWN,oq.w,l / 2,25.0,ASSIGN,WEAPON_TIMING/AIM_INPUT
+SHIELDS_DIRECTIONAL_IDLE_ENERGY_USAGE,fna.p,1,1,ASSIGN,RESOURCE_GAMEPLAY_INPUT
+SHIELDS_DIRECTIONAL_RADIUS,rjb.u,32768,32768,DECL,GAMEPLAY_INPUT
+SHIELDS_DIRECTIONAL_ARC,eha.q,1024,1024,ASSIGN,GAMEPLAY_INPUT
+SHIELDS_DAMAGE_ENERGY_CONVERSION,vgb.o,32,32,ASSIGN,RESOURCE_GAMEPLAY_INPUT

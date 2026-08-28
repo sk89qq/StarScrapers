@@ -1,0 +1,134 @@
+# Forensic Master File Audit — 2026-08-28
+
+Files audited across current and prior project trees: 130
+
+- `00_DEFINITIVE_ORIGINAL_JAR.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `00_FORENSIC_ENGINEER_BLUEPRINT.md` — REFERENCE — retain; status controlled by master
+- `00_RAW_FORENSIC_REFERENCE.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `00_SOURCE_INDEX.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `01_GAME_STRUCTURE_INVENTORY.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `02_BASELINE_GAMEPLAY_LOOP.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `03_NETWORK_RPC_MANIFEST.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `04_DIRECTIVES_AND_CHANGELOG.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `06_FOUNDATION_AUDIT.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `07_SUPER_AUDIT.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `08_RUNTIME_AUDIT_ACTIONS.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `09_AUTHORITY_CENSUS.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `10_ROBLOX_LUAU_REFERENCE.md` — GOVERNING REFERENCE — use for authority/rules/context
+- `11_RAW_RECONCILIATION.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `12_NATIVE_SEMANTIC_EXTRACTION_STATUS.md` — REFERENCE — retain; status controlled by master
+- `12_WEAPON_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `13_COMPONENT_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `13_SOCKET_GRAPH_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `14_STRUCTURAL_REPLACEMENT_MIGRATION.md` — REFERENCE — retain; status controlled by master
+- `15_BLUEPRINT_BUILD_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `16_COMBAT_RESOURCE_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `17_PHYSICS_DETACH_KINEMATICS_MIGRATION.md` — REFERENCE — retain; status controlled by master
+- `18_DEBRIS_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `19_RAW_PHYSICS_OPERATOR_RECOVERY.md` — REFERENCE — retain; status controlled by master
+- `20_NATIVE_DEBRIS_KINEMATICS_MIGRATION.md` — REFERENCE — retain; status controlled by master
+- `21_FORENSIC_PROVENANCE_CORRECTION.md` — REFERENCE — retain; status controlled by master
+- `21_NATIVE_DEBRIS_LAUNCH_MAPPING.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `22_MISSION_FRAMEWORK_MIGRATION.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `23_NETWORK_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `23_RESOURCE_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `24_PROJECTILE_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `24_WEAPON_RESOURCE_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `25_BALLISTICS_HIT_RESOLUTION_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `25_BODY_RECOMPUTE_MIGRATION.md` — REFERENCE — retain; status controlled by master
+- `26_BALLISTIC_WEAPON_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `26_COMPONENT_DEFINITION_VALIDATION.md` — REFERENCE — retain; status controlled by master
+- `27_PROJECTILE_HIT_AUTHORITY_HANDOFF.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `27_ROBLOX_COMBAT_TYPE_ALIGNMENT.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `28_HIT_RESOLUTION_HANDOFF.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `29_BLUEPRINT_TRANSACTION_HANDOFF.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `29_BLUEPRINT_TRANSACTION_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `29_BODY_RECOMPUTE_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `29_COMPONENT_PARENT_CHILD_INTEGRITY.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `29_GRAPPLE_ROBLOX_LIFECYCLE_MIGRATION.md` — REFERENCE — retain; status controlled by master
+- `29_NATIVE_THRUSTER_OPERATOR_RECOVERY.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `29_ROBLOX_API_HYGIENE.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `30_BLOCKED_SHIELD_FORENSICS.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `30_NATIVE_THRUSTER_BINDING_RECOVERY.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `30_REPAIR_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `30_RUNTIME_TOPOLOGY_AUTHORITY_MIGRATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `30_STRUCTURAL_RECOMPUTE_TRANSACTION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `31_BLUEPRINT_PRIMITIVE_SERIALIZATION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `31_COMPONENT_56_SLOT_RECONCILIATION.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `31_STRUCTURAL_REPLACEMENT_TRANSACTION.md` — HISTORICAL / IMPLEMENTATION-CLOSED — retain identifiers, do not reopen
+- `32_NATIVE_COMPONENT_SLOT_MATRIX.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `33_NATIVE_COMPONENT_PROVENANCE.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `33_NATIVE_PHYSICS_CONFIG_RECONCILIATION.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `34_NATIVE_WEAPON_PARAMETER_CONTRACT.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `34_PHYSICS_SOURCE_DEPENDENCY_MAP.md` — ACTIVE FORENSIC EVIDENCE — reconcile into master before use
+- `35_JAR_BYTECODE_PHYSICS_VERIFICATION.md` — REFERENCE — retain; status controlled by master
+- `DEFINITIVE_VALUES/235_NATIVE_DEFAULTS_ATTESTATION.md` — CANONICAL EVIDENCE — native defaults/value extraction
+- `DEFINITIVE_VALUES/FULL_JAR_ANALYSIS.md` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/JAR_CENSUS.md` — CANONICAL EVIDENCE — raw/semantic census; query, do not reread wholesale
+- `DEFINITIVE_VALUES/JAR_CENSUS_STATS.json` — CANONICAL EVIDENCE — raw/semantic census; query, do not reread wholesale
+- `DEFINITIVE_VALUES/JAR_SEMANTIC_CLASS_INDEX.csv` — CANONICAL EVIDENCE — raw/semantic census; query, do not reread wholesale
+- `DEFINITIVE_VALUES/JAR_SEMANTIC_DOMAIN_MAP.md` — CANONICAL EVIDENCE — raw/semantic census; query, do not reread wholesale
+- `DEFINITIVE_VALUES/NATIVE_COMPONENT_HP_OPERATOR.md` — CANONICAL EVIDENCE — HP operator
+- `DEFINITIVE_VALUES/NATIVE_CONFIGURATION_RESOLUTION.md` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/NATIVE_ENGINE_INPUT_REGISTRY.csv` — CANONICAL — implementation-facing native input registry
+- `DEFINITIVE_VALUES/NATIVE_VALUE_SWEEP_2026-08-28.md` — CANONICAL EVIDENCE — latest native-value sweep
+- `DEFINITIVE_VALUES/RAW_CENSUS_PROVENANCE.md` — CANONICAL EVIDENCE — raw/semantic census; query, do not reread wholesale
+- `DEFINITIVE_VALUES/README.md` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/SOURCE_MANIFEST.txt` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/component_56_slots.csv` — CANONICAL EVIDENCE — component geometry/slot ledger
+- `DEFINITIVE_VALUES/full_jar_semantic_census.md` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/native_class_inventory.csv` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/native_configuration_values.csv` — CANONICAL EVIDENCE — native defaults/value extraction
+- `DEFINITIVE_VALUES/native_numeric_literals.csv` — EVIDENCE — retain; not an independent work queue
+- `DEFINITIVE_VALUES/semantic_class_index_v2.csv` — EVIDENCE — retain; not an independent work queue
+- `FORENSIC_MASTER.md` — CANONICAL CONTROL
+- `FORENSIC_README.md` — CANONICAL CONTROL
+- `FORENSIC_VARIABLE_REGISTRY.csv` — REFERENCE — retain; status controlled by master
+- `MIGRATION_RESIDUE_REPORT.md` — HISTORICAL AUDIT — findings reconciled here; not an active queue by itself
+- `MISSION_SYMBOL_INDEX.md` — REFERENCE — retain; status controlled by master
+- `ORIGINAL_JAR/PREPROCESSING_01_06/DECOMPILED_SOURCE_HANDOFF.md` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/DECOMPILER_HANDOFF.md` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/BYTECODE_OPCODE_FREQUENCY.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/CLASS_INDEX.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/FIELD_INDEX.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/FIELD_REFERENCE_INDEX.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/INDEX_MANIFEST.md` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/METHOD_INDEX.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/METHOD_REFERENCE_INDEX.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/PACKAGE_INDEX.tsv` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/SOURCE_EVIDENCE_LEDGER.md` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/INDEX/STRING_LITERAL_INDEX.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/README.md` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/SHA256.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/STEP_01_06_MANIFEST.md` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/classes.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/file-list.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-all.sha256` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-all.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-status.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/anb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/aqa.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/ara.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/ecb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/faa.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/fnb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/hab.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/imb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/lja.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/lsb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/ml.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/nbb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/ou.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/pe.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/qjb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/rrb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/sfa.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/ta.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/tj.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/wfb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/wlb.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/relevant-classes.txt` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/unpacked-classfiles.tar.gz` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/PREPROCESSING_01_06/voidhunters-original.jar` — IMMUTABLE EVIDENCE — JAR/javap/index preprocessing
+- `ORIGINAL_JAR/wlb.java` — EVIDENCE — retain; not an independent work queue
+- `ORIGINAL_JAR/wlb.javap.txt` — EVIDENCE — retain; not an independent work queue

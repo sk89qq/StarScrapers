@@ -1,0 +1,12 @@
+# Cross-reference only; NOT a second numeric authority.
+# Authoritative subsystem values live in the domain tables below. Engine-bound values live in NATIVE_ENGINE_INPUTS.csv.
+# This index exists only to locate a value domain quickly.
+domain,authoritative_file
+components,COMPONENTS_56.csv
+weapons,WEAPONS.csv
+thrusters,THRUSTERS.csv
+shields,SHIELDS.csv
+grapple,GRAPPLE.csv
+missions,MISSIONS.csv
+engine_boundary,NATIVE_ENGINE_INPUTS.csv
+symbols_and_provenance,../../FORENSIC_VARIABLE_REGISTRY.csv

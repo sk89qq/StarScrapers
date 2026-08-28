@@ -1,0 +1,9 @@
+# Current cross-reference only; NOT a numeric authority.
+domain,authoritative_file
+components,COMPONENTS_56.csv
+weapons,WEAPONS.csv
+thrusters,THRUSTERS.csv
+shields,SHIELDS.csv
+grapple,GRAPPLE.csv
+missions,MISSIONS.csv
+engine_boundary,NATIVE_ENGINE_INPUTS.csv

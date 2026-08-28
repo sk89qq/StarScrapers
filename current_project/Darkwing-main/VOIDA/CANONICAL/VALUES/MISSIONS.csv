@@ -1,0 +1,8 @@
+# Current canonical subsystem view. Values originate from NATIVE_ENGINE_INPUTS.csv; do not edit independently.
+configuration_key,native_holder,native_default_expression,resolved_default,source_status,implementation_role
+MAX_SHIP_SIZE,ue.a,200,200,DECL,GAMEPLAY_INPUT
+FIGHTERS_PER_PLAYER_MAXIMUM,wk.a,20,20,ASSIGN,GAMEPLAY_INPUT
+ARMAGEDDON_LENGTH,wkb.a,60,60,DECL,GAMEPLAY_INPUT
+MISSION_TERRAIN_DEBRIS_PROBABILITY,apb.a,1,1,ASSIGN,GAMEPLAY_INPUT
+MISSION_DEBRIS_DEFAULT_PROBABILITY,qqb.b,10,10,DECL,GAMEPLAY_INPUT
+MISSION_DEBRIS_VOTING_CHANCESTEP,opb.o,25,25,ASSIGN,GAMEPLAY_INPUT

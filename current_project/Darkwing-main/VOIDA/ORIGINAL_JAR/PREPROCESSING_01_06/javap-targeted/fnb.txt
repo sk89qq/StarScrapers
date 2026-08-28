@@ -1,0 +1,317 @@
+abstract class fnb {
+  static int a;
+    descriptor: I
+
+  static int b;
+    descriptor: I
+
+  static java.util.Hashtable c;
+    descriptor: Ljava/util/Hashtable;
+
+  abstract int a(int, boolean);
+    descriptor: (IZ)I
+
+  abstract byte[] a(int, int);
+    descriptor: (II)[B
+
+  static final void a(int, int, int, boolean, int, int);
+    descriptor: (IIIZII)V
+    Code:
+       0: getstatic     #19                 // Field VoidHunters.G:I
+       3: istore        11
+       5: iload_3
+       6: ifeq          27
+       9: bipush        -3
+      11: bipush        82
+      13: bipush        -123
+      15: iconst_1
+      16: bipush        37
+      18: bipush        119
+      20: invokestatic  #21                 // Method a:(IIIZII)V
+      23: goto          27
+      26: athrow
+      27: aconst_null
+      28: getstatic     #27                 // Field ms.y:Lij;
+      31: if_acmpeq     388
+      34: aconst_null
+      35: getstatic     #32                 // Field kba.a:Llta;
+      38: if_acmpeq     388
+      41: goto          45
+      44: athrow
+      45: getstatic     #27                 // Field ms.y:Lij;
+      48: iconst_0
+      49: invokevirtual #38                 // Method ij.d:(I)Lksa;
+      52: checkcast     #40                 // class qw
+      55: astore        6
+      57: aload         6
+      59: ifnull        232
+      62: aload         6
+      64: getfield      #43                 // Field qw.f:I
+      67: iload         4
+      69: iload         11
+      71: ifne          236
+      74: if_icmpne     214
+      77: goto          81
+      80: athrow
+      81: aload         6
+      83: getfield      #47                 // Field qw.m:Z
+      86: ifeq          214
+      89: goto          93
+      92: athrow
+      93: getstatic     #52                 // Field jia.o:I
+      96: ineg
+      97: aload         6
+      99: getfield      #55                 // Field qw.i:I
+     102: iadd
+     103: invokestatic  #61                 // Method java/lang/Math.abs:(I)I
+     106: iconst_m1
+     107: ixor
+     108: iload_0
+     109: iconst_m1
+     110: ixor
+     111: if_icmple     214
+     114: goto          118
+     117: athrow
+     118: aload         6
+     120: getfield      #55                 // Field qw.i:I
+     123: iconst_m1
+     124: ixor
+     125: getstatic     #52                 // Field jia.o:I
+     128: iconst_m1
+     129: ixor
+     130: if_icmpne     138
+     133: goto          137
+     136: athrow
+     137: return
+     138: iload_2
+     139: ineg
+     140: aload         6
+     142: getfield      #63                 // Field qw.d:I
+     145: iadd
+     146: istore        7
+     148: aload         6
+     150: getfield      #66                 // Field qw.h:I
+     153: iload_1
+     154: ineg
+     155: iadd
+     156: istore        8
+     158: iload         7
+     160: bipush        109
+     162: iload         8
+     164: invokestatic  #71                 // Method ar.a:(IBI)I
+     167: istore        9
+     169: iload         9
+     171: iconst_m1
+     172: ixor
+     173: getstatic     #76                 // Field tj.q:I
+     176: iconst_m1
+     177: ixor
+     178: if_icmpgt     185
+     181: goto          214
+     184: athrow
+     185: aload         6
+     187: getfield      #63                 // Field qw.d:I
+     190: ldc           #77                 // int 65536
+     192: iadd
+     193: aload         6
+     195: getfield      #66                 // Field qw.h:I
+     198: aload         6
+     200: getfield      #66                 // Field qw.h:I
+     203: aload         6
+     205: getfield      #63                 // Field qw.d:I
+     208: bipush        -54
+     210: invokestatic  #82                 // Method cqb.a:(IIIIB)V
+     213: return
+     214: getstatic     #27                 // Field ms.y:Lij;
+     217: bipush        127
+     219: invokevirtual #85                 // Method ij.a:(B)Lksa;
+     222: checkcast     #40                 // class qw
+     225: astore        6
+     227: iload         11
+     229: ifeq          57
+     232: sipush        128
+     235: iload_2
+     236: invokestatic  #90                 // Method uv.a:(II)I
+     239: istore        6
+     241: bipush        95
+     243: iload_2
+     244: iload_1
+     245: invokestatic  #95                 // Method pja.b:(BII)I
+     248: istore        7
+     250: sipush        -257
+     253: iload         5
+     255: iconst_m1
+     256: ixor
+     257: if_icmpne     264
+     260: goto          274
+     263: athrow
+     264: iload         7
+     266: iload         5
+     268: imul
+     269: ldc           #96                 // int 1235488040
+     271: ishr
+     272: istore        7
+     274: iload         4
+     276: istore        8
+     278: iconst_1
+     279: getstatic     #102                // Field fbb.j:[I
+     282: iload         4
+     284: iaload
+     285: if_icmplt     292
+     288: goto          311
+     291: athrow
+     292: iload         4
+     294: getstatic     #108                // Field jp.Jc:Ljava/util/Random;
+     297: getstatic     #102                // Field fbb.j:[I
+     300: iload         4
+     302: iaload
+     303: bipush        117
+     305: invokestatic  #113                // Method hob.a:(Ljava/util/Random;II)I
+     308: iadd
+     309: istore        8
+     311: iload         7
+     313: bipush        100
+     315: iload         6
+     317: getstatic     #118                // Field fa.d:[Lgd;
+     320: iload         8
+     322: aaload
+     323: invokestatic  #123                // Method coa.a:(IIILgd;)Lana;
+     326: astore        9
+     328: new           #40                 // class qw
+     331: dup
+     332: invokespecial #127                // Method qw."<init>":()V
+     335: astore        10
+     337: aload         10
+     339: iconst_1
+     340: putfield      #47                 // Field qw.m:Z
+     343: aload         10
+     345: iload_1
+     346: putfield      #66                 // Field qw.h:I
+     349: aload         10
+     351: iload         4
+     353: putfield      #43                 // Field qw.f:I
+     356: aload         10
+     358: aload         9
+     360: putfield      #131                // Field qw.k:Lana;
+     363: aload         10
+     365: getstatic     #52                 // Field jia.o:I
+     368: putfield      #55                 // Field qw.i:I
+     371: aload         10
+     373: iload_2
+     374: putfield      #63                 // Field qw.d:I
+     377: getstatic     #27                 // Field ms.y:Lij;
+     380: sipush        -10258
+     383: aload         10
+     385: invokevirtual #134                // Method ij.b:(ILksa;)V
+     388: goto          470
+     391: astore        6
+     393: aload         6
+     395: new           #136                // class java/lang/StringBuilder
+     398: dup
+     399: invokespecial #137                // Method java/lang/StringBuilder."<init>":()V
+     402: ldc           #139                // String fnb.J(
+     404: invokevirtual #143                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     407: iload_0
+     408: invokevirtual #146                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     411: bipush        44
+     413: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     416: iload_1
+     417: invokevirtual #146                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     420: bipush        44
+     422: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     425: iload_2
+     426: invokevirtual #146                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     429: bipush        44
+     431: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     434: iload_3
+     435: invokevirtual #152                // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+     438: bipush        44
+     440: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     443: iload         4
+     445: invokevirtual #146                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     448: bipush        44
+     450: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     453: iload         5
+     455: invokevirtual #146                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     458: bipush        41
+     460: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+     463: invokevirtual #156                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     466: invokestatic  #161                // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+     469: athrow
+     470: return
+    Exception table:
+       from    to  target type
+          96   133   136   Class java/lang/RuntimeException
+          83   114   117   Class java/lang/RuntimeException
+          81    89    92   Class java/lang/RuntimeException
+          62    77    80   Class java/lang/RuntimeException
+          27    41    44   Class java/lang/RuntimeException
+           5   137   391   Class java/lang/RuntimeException
+         169   184   184   Class java/lang/RuntimeException
+           5    23    26   Class java/lang/RuntimeException
+         138   213   391   Class java/lang/RuntimeException
+         278   291   291   Class java/lang/RuntimeException
+         250   263   263   Class java/lang/RuntimeException
+         214   388   391   Class java/lang/RuntimeException
+
+  fnb();
+    descriptor: ()V
+    Code:
+       0: aload_0
+       1: invokespecial #162                // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void a(int);
+    descriptor: (I)V
+    Code:
+       0: iload_0
+       1: bipush        -8
+       3: if_icmplt     15
+       6: bipush        -67
+       8: putstatic     #165                // Field a:I
+      11: goto          15
+      14: athrow
+      15: aconst_null
+      16: putstatic     #167                // Field c:Ljava/util/Hashtable;
+      19: goto          52
+      22: astore_1
+      23: aload_1
+      24: new           #136                // class java/lang/StringBuilder
+      27: dup
+      28: invokespecial #137                // Method java/lang/StringBuilder."<init>":()V
+      31: ldc           #169                // String fnb.K(
+      33: invokevirtual #143                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      36: iload_0
+      37: invokevirtual #146                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      40: bipush        41
+      42: invokevirtual #149                // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      45: invokevirtual #156                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      48: invokestatic  #161                // Method rta.a:(Ljava/lang/Throwable;Ljava/lang/String;)Lhva;
+      51: athrow
+      52: return
+    Exception table:
+       from    to  target type
+           0    19    22   Class java/lang/RuntimeException
+           0    11    14   Class java/lang/RuntimeException
+
+  abstract qp a(byte);
+    descriptor: (B)Lqp;
+
+  static {};
+    descriptor: ()V
+    Code:
+       0: sipush        5120
+       3: putstatic     #173                // Field b:I
+       6: getstatic     #173                // Field b:I
+       9: i2d
+      10: ldc2_w        #174                // double 1.0471975511965976d
+      13: invokestatic  #179                // Method java/lang/Math.sin:(D)D
+      16: dmul
+      17: d2i
+      18: putstatic     #165                // Field a:I
+      21: new           #181                // class java/util/Hashtable
+      24: dup
+      25: invokespecial #182                // Method java/util/Hashtable."<init>":()V
+      28: putstatic     #167                // Field c:Ljava/util/Hashtable;
+      31: return
+}

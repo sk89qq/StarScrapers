@@ -1,0 +1,2 @@
+Targeted authoritative classes disassembled: 21
+Total classfiles in JAR: 1570

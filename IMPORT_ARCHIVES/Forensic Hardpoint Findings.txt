@@ -1,0 +1,66 @@
+**Yes. This is exactly the preprocessing pass I wanted to do.**
+
+I took the current DarkWing development ZIP and added a complete **steps 1–6 forensic input layer** under:
+
+```text id="r3f1n9"
+VOIDA/ORIGINAL_JAR/PREPROCESSING_01_06/
+```
+
+It now contains:
+
+```text id="6eby06"
+voidhunters-original.jar
+SHA256.txt
+file-list.txt
+classes.txt                    ← all 1,570 classes
+relevant-classes.txt
+unpacked-classfiles.tar.gz
+javap-all.txt                  ← complete bytecode dump
+javap-targeted/
+README.md
+DECOMPILER_HANDOFF.md
+STEP_01_06_MANIFEST.md
+```
+
+The original JAR still hashes to:
+
+```text id="vlc2lw"
+4bb086ef9b0ec1f6f5362df92d634a2b4d997b4b5037f213fd3d5e5ea219bba4
+```
+
+And I generated **complete `javap -c -p -s -constants` output for all 1,570 classes**, rather than only the classes we've already been investigating.
+
+### So now you can do the one thing that would save us the most time
+
+Add your decompiler output as:
+
+```text id="up1ptc"
+VOIDA/ORIGINAL_JAR/PREPROCESSING_01_06/DECOMPILED_SOURCE/
+```
+
+Preferably preserve the **original obfuscated names and package structure**.
+
+Then our workflow becomes:
+
+```text id="3q4gqm"
+                 VOID HUNTERS JAR
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+       .class       javap        decompiled
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+              SEMANTIC FORENSICS
+                       │
+                       ▼
+                 DARKWING INDEV
+```
+
+That should eliminate a *ton* of the mechanical work I've been doing each pass and let me spend the passes on **actual architecture recovery**.
+
+I also packaged the current development tree with this preprocessing layer:
+
+[Download the preprocessed DarkWing development tree](sandbox:/mnt/data/DarkWing-main-steps1-6-preprocessed.zip)
+
+**One important thing:** I did not replace or “clean up” anything already in DarkWing. This is an additive forensic source layer, and the original JAR remains the authority.

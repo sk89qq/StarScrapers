@@ -1,0 +1,61 @@
+You're right. I was wrong on the maximum.
+
+The forensic slot matrix shows **slot 47 is a 16-integer coordinate array = 8 vertices**:
+
+```text id="xnhk05"
+new wfb(
+    new int[]{
+         20,-18,
+         20, 18,
+        -11, 18,
+        -11,  5,
+        -20,  5,
+        -20, -5,
+        -11, -5,
+        -11,-18
+    },
+    -20, 0
+)
+```
+
+So the actual polygon is:
+
+```text id="rot9b3"
+(20,-18) ───── (20,18)
+   │              │
+   │              └──── (-11,18)
+   │                       │
+   │                       │
+   │              (-11,5) ─┘
+   │
+(-20,5) ─────────┐
+   │              │
+(-20,-5) ────────┘
+   │
+   └──────── (-11,-5)
+                  │
+                  └──── (-11,-18)
+```
+
+That's essentially the **diamond/angled nose + rectangular body** shape you were remembering.
+
+And this is actually **good news for Box2D**:
+
+- **8 vertices exactly** → within Box2D's polygon limit.
+- It appears to be **convex**.
+- Therefore it can be represented as **one native Box2D polygon**, with no decomposition.
+- We have **no component requiring >8 vertices** in the explicitly recovered polygon initializers.
+
+There is an important correction to my previous answer, though: I should **not claim all 56 are proven ≤8/convex yet**, because several slots are generated/object references (`object`, `jba.a(...)`, etc.). Slot 47 is now definitively known to be the maximum among the explicit polygon initializers we've extracted.
+
+The particularly relevant line in our forensic matrix is slot 47 at source line 202; the surrounding documentation identifies the 56-slot system and distinguishes direct definitions from generated/chassis-dependent definitions. fileciteturn0file0
+
+### So Box2D's polygon limit looks essentially perfect for us
+
+Our known geometry is:
+
+**3–8 vertices**, with the largest known native shape being **exactly 8**.
+
+That makes me considerably more interested in Box2D.
+
+The next thing I'd do is **extract every actual `wfb` initializer—including the generated `jba.a(...)` slots—and calculate the exact polygon vertex count, convexity, winding order, area, centroid, and inertia for all of them.** That would give us a definitive geometry compatibility table before we choose the physics backend.
