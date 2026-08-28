@@ -20,10 +20,30 @@ Recovered from the original-JAR forensic substrate.
 
 ## Timing
 
-`GRAPPLING_HOOK_COOLDOWN` is assigned from the native shared timing unit `l`; the canonical resolved value is 50. The source registry also expresses other timings as multiples of `l` (for example `10 * l = 500` and `25 * l = 1250`). This record does **not** invent a seconds conversion for `l`; consumers must use the project's verified native tick/time boundary.
+Independent gameplay timing anchors now establish the shared native timing unit as:
+
+**`1 l = 1.0 second`**
+
+Evidence anchor: the native Pedro repair active-time value is `5 * l`; observed gameplay behavior is a 5-second repair channel/active interval. Therefore `5l = 5s`, giving `1l = 1s`.
+
+This converts the recovered native timing expressions as follows:
+
+- `1l` = 1 second
+- `5l` = 5 seconds
+- `10l` = 10 seconds
+- `20l` = 20 seconds
+- `25l` = 25 seconds
+- `40l` = 40 seconds
+
+This is a gameplay timing-unit calibration, not a claim that `l` equals one simulation frame. The repository's resolved numeric representation (for example `1l = 50`) must not be interpreted as milliseconds.
+
+The grapple cooldown therefore resolves to **1 second** because `GRAPPLING_HOOK_COOLDOWN = 1l`.
+
+Other independently observed gameplay anchors should be used to validate this conversion before treating it as universal across every native subsystem.
 
 ## Source anchors
 
 - `VOIDA/ORIGINAL_JAR/PREPROCESSING_01_06/javap-targeted/fnb.txt` — native static initialization and native constants.
 - `VOIDA/CANONICAL/VALUES/GRAPPLE.csv` — canonical resolved subsystem view.
 - `VOIDA/CANONICAL/VALUES/NATIVE_ENGINE_INPUTS.csv` — numeric authority.
+- Native Pedro repair timing record — `PEDROS_REPAIR_MODE_ACTIVE_TIME = 5l`, matched to the observed 5-second channel.
