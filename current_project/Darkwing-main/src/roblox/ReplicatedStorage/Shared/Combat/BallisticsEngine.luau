@@ -44,11 +44,11 @@ local function findSegmentBodyHit(startPoint: Vector2, endPoint: Vector2, bodies
 			local radius = body.BoundingRadius or 6.0
 			local distanceToSegment, segmentT = distancePointToSegment(body.Position, startPoint, endPoint)
 			if distanceToSegment <= radius then
-				local candidateTravel = segmentLength * segmentT
+				local direction = endPoint - startPoint
+				local hitOffset = math.sqrt(math.max(radius * radius - distanceToSegment * distanceToSegment, 0))
+				local hitT = math.clamp(segmentT - hitOffset / math.max(segmentLength, 0.000001), 0, 1)
+				local candidateTravel = segmentLength * hitT
 				if candidateTravel < bestTravel then
-					local direction = endPoint - startPoint
-					local hitOffset = math.sqrt(math.max(radius * radius - distanceToSegment * distanceToSegment, 0))
-					local hitT = math.clamp(segmentT - hitOffset / math.max(segmentLength, 0.000001), 0, 1)
 					bestTravel = candidateTravel
 					bestBody = body
 					bestHit = startPoint + direction * hitT
