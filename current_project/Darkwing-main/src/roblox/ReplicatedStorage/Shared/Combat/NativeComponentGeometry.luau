@@ -47,14 +47,10 @@ function NativeComponentGeometry.UcaTransform(
 	return out
 end
 
--- Fully resolved native constructor for slot 30.
 function NativeComponentGeometry.Slot30(): {number}
 	return { 2217, 0, -2217, 2560, -2217, -2560 }
 end
 
--- Resolved uca-based slot constructions from wlb.f(byte), using the native
--- fnb dimensions b=5120 and a=4434. These are emitted as source-derived
--- coordinate arrays; no bounding-box approximation is involved.
 function NativeComponentGeometry.GetResolvedSlotPolygon(slot: number): {number}?
 	local dimensions: Dimensions = { a = 4434, b = 5120 }
 	if slot == 31 then
@@ -79,24 +75,22 @@ function NativeComponentGeometry.GetResolvedSlotPolygon(slot: number): {number}?
 	return nil
 end
 
--- Exact jba.a call contracts recovered from wlb.f(byte). These describe the
--- native generator invocation without pretending that unresolved mgb/tka/fra
--- semantics are known.
+-- Exact jba.a call contracts recovered from wlb.f(byte).
 function NativeComponentGeometry.GetProceduralSlotSpec(slot: number): ProceduralSlotSpec?
 	if slot == 48 then
-		return { seed = 1000, mode = 12, variationKind = "MGB", variation = 47, scale = 2500 }
-	elseif slot == 49 then
 		return { seed = 1000, mode = 12, variationKind = "MGB", variation = 61, scale = 2500 }
-	elseif slot == 50 then
+	elseif slot == 49 then
 		return { seed = 500, mode = 12, variationKind = "INDEX_PLUS", variation = 45, scale = 1250 }
-	elseif slot == 52 then
+	elseif slot == 50 then
 		return { seed = 500, mode = 12, variationKind = "MGB", variation = -10, scale = 1250 }
-	elseif slot == 53 then
+	elseif slot == 52 then
 		return { seed = 1500, mode = 12, variationKind = "CONSTANT", variation = -127, scale = 3000 }
-	elseif slot == 54 then
+	elseif slot == 53 then
 		return { seed = 1500, mode = 12, variationKind = "CONSTANT", variation = 123, scale = 3000 }
-	elseif slot == 55 then
+	elseif slot == 54 then
 		return { seed = 250, mode = 10, variationKind = "MGB", variation = -108, scale = 625 }
+	elseif slot == 55 then
+		return { seed = 250, mode = 10, variationKind = "CONSTANT", variation = 122, scale = 625 }
 	end
 	return nil
 end
