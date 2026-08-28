@@ -1,6 +1,6 @@
 # DarkWing Port Status — CURRENT SNAPSHOT
 
-**Effective:** 2026-08-28 14:31 CDT
+**Effective:** 2026-08-28 16:31 CDT
 
 ## CLOSED-FOR-PORT
 - Mass / component area-derived mass
@@ -10,6 +10,9 @@
 - Native angle/trig encoding
 - Structural authority / transaction model
 - Projectile swept-hit implementation boundary
+- Shield native input boundary
+- Grapple native input boundary
+- Debris native launch input boundary and launch calculation
 
 ## CURRENTLY RECOVERED / APPLY
 - Native implementation-facing value registry
@@ -18,6 +21,7 @@
 - Weapon parameter namespace and recovered values
 - Shield native values + runtime boundary integration
 - Grapple native values + runtime boundary integration
+- Debris detach/launch values + runtime boundary integration
 - Repair values
 
 ## OPEN NATIVE/GAMEPLAY WORK
@@ -28,7 +32,7 @@
 - Thruster gameplay activation/binding semantics
 - Power/resource consumer semantics
 - Any genuinely unresolved shield/grapple semantics supported by current evidence
-- Debris launch scalar/cleanup
+- Debris native cleanup timing remains unestablished; no guessed timing is used
 - Mission timing/transitions
 - Environment/AI behavior needed for the port
 
