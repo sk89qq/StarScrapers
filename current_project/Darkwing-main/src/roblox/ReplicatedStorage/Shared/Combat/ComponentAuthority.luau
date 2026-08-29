@@ -7,6 +7,10 @@
 
 	Component binding is fail-closed: the part must carry an explicit ComponentType
 	that exists in VoidHunterComponents. No gameplay state is inferred from Part names.
+
+	Damage semantics are definitive: damage is applied directly to the target part's
+	health in the shared native health/damage scale. There is no secondary damage-to-HP
+	conversion in this authority layer.
 ]=]
 
 local HttpService = game:GetService("HttpService")
@@ -219,6 +223,9 @@ function ComponentAuthority.ApplyDamage(part: BasePart, damage: number): (Compon
 	if typeof(damage) ~= "number" or damage <= 0 or damage ~= damage or damage == math.huge or damage == -math.huge then
 		return state, false
 	end
+
+	-- Definitive damage operation: same-scale damage is subtracted directly from
+	-- the target component's health; clamp only at the destruction boundary.
 	state.Health = math.max(0, state.Health - damage)
 	local destroyed = state.Health <= 0
 	state.Destroyed = destroyed
