@@ -24,4 +24,9 @@ function PhysicsClock.accumulate(accumulator: number, frameTime: number): (numbe
 	return total - steps * PhysicsClock.DT, steps
 end
 
+function PhysicsClock.stepCount(frameTime: number): number
+	local _, steps = PhysicsClock.accumulate(0, frameTime)
+	return steps
+end
+
 return PhysicsClock
