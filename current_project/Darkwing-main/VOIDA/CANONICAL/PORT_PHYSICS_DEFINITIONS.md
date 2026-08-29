@@ -5,39 +5,48 @@
 - Base simulation cadence: **30 Hz**.
 - Native gameplay duration: **1l = 1 second**.
 - Fixed-point numeric representation: **Q16**, where **65536 = 1.0**.
-- Damage normalization: **2048 native damage units** is the canonical normalized damage scale; health and damage use the same scale, so no real-world HP conversion is required.
+- Damage/health use the same native scale; damage is **direct subtraction from the target part's health**. No separate damage-to-HP conversion is required.
+- Q16 arithmetic is the canonical numeric domain for fixed-point quantities; preserve native relative values rather than introducing SI conversions.
 
 ## Energy subsystem
 
-- Player-facing energy is a **0–100% visual representation**; the original UI does not require a numeric gameplay-facing scale.
-- Energy is governed by the **capacitor subsystem and its sources**.
-- Recharge is **simulation-tick based and continuous**.
-- Recharge does not stop merely because weapons are firing.
-- When energy falls below the weapon-fire threshold, the system enters its depleted/recharge state; the capacitor must **fully recharge before weapons become fireable again**.
-- Individual weapon energy costs consume the shared subsystem resource; do not invent a separate real-world energy unit.
+- Player-facing energy is a **0–100% visual representation**.
+- All weapon energy draws from **one shared energy pool** governed by the capacitor subsystem and its sources.
+- Recharge is **tick based and occurs once per 30-Hz simulation tick**.
+- Recharge is continuous and does not stop merely because weapons are firing.
+- When energy falls below the fireability threshold, weapons enter the depleted/recharge lockout state and become fireable again only after the required **full recharge** state.
+- Capacitor/source values are therefore interpreted as per-tick contributions/capacity values in the native numeric domain; no separate real-world energy unit is required.
 
 ## Spatial representation
 
-- For the port, **1 native position/distance unit = 1 port spatial unit**.
-- Preserve all relative positions, ranges, radii, offsets, and geometry directly.
+- **1 native position/distance unit = 1 port spatial unit** for this port.
+- Preserve relative positions, ranges, radii, offsets, and geometry directly.
 - No meter/foot/world-scale conversion is required.
 
 ## Velocity and acceleration
 
 - Preserve native relative velocity values; no real-world speed conversion is required.
-- Projectile speeds are fixed per projectile type unless the native behavior explicitly supplies a different motion model.
-- The player ship is the principal variable-velocity craft: propulsion/graph/thruster configuration changes its velocity state.
-- Fighter AI uses its own vector/impulse movement behavior rather than the fixed-projectile-speed model.
-- Native acceleration-bearing fields are the acceleration inputs. Do **not** introduce an external universal acceleration constant.
-- Integrate velocity and position through the authoritative simulation cadence while preserving the native relative scales.
+- Projectile speeds are fixed per projectile type unless native behavior explicitly supplies a different motion model.
+- The player ship is the principal variable-velocity craft: its propulsion/thruster configuration changes its velocity state.
+- Fighter AI uses vector/impulse movement rather than the fixed-projectile-speed model.
+- Native acceleration-bearing fields are the acceleration inputs. No external universal acceleration constant is introduced.
+- Propulsion is **graph based**: the propulsion component applies force at its defined point in the component graph, affecting the connected physical body.
+- Motion is integrated on the authoritative 30-Hz simulation cadence.
 
 ## Angular representation
 
 - Native angular quantities use the standardized angular/fixed-point representation.
-- `AIMSPEED` is **weapon angular traverse/aiming speed**, not fire rate.
+- `AIMSPEED` is weapon angular traverse/aiming speed, not fire rate.
 - `AIMARC` is the weapon's angular aiming envelope/limit.
 - `AIMSPEED = 0` identifies the recovered fixed/non-pivoting weapon modules.
 - Nonzero `AIMSPEED` identifies traversable/pivoting weapon behavior.
+
+## Recoil / weapon mass
+
+- `FIRE_FORCE` produces recoil opposite the projectile's travel vector.
+- Recoil is applied at the weapon/component attachment point in the component graph.
+- No native weapon mass/weight field has been recovered. **Weapons are therefore definitive weightless attachment nodes for the port.**
+- Recoil from a weightless weapon propagates through its connection to the physical component/body.
 
 ## Projectile timing
 
@@ -45,16 +54,12 @@ Projectile `LIFE` values that are native 30-Hz counters convert as:
 
 `seconds = LIFE / 30`
 
-Examples from the canonical registry:
+No additional projectile clock is introduced.
 
-- Bomblet `LIFE=25` → **0.8333 s**
-- Sniper `LIFE=50` → **1.6667 s**
-- Countermeasure `LIFE=100` → **3.3333 s**
-- Torpedo/Missile `LIFE=500` → **16.6667 s**
-- Mass Driver `2*l` → **2.0 s**
+## Integration conventions
 
-These conversions use the established timing definition; no additional projectile clock is introduced.
-
-## Implementation principle
-
-The port should reproduce the game's **relative state transitions and numeric relationships**, not impose real-world SI units that the original gameplay does not expose or require.
+- Energy regeneration: once per simulation tick.
+- Shield depletion/recharge: once per simulation tick using the same 30-Hz cadence.
+- Damage application: direct `part.health -= damage` in the shared native health/damage scale.
+- Shared energy pool: all weapon consumption and capacitor/source regeneration operate on the same resource.
+- Relative spatial/velocity values remain native; physical-world units are not required for faithful gameplay behavior.
