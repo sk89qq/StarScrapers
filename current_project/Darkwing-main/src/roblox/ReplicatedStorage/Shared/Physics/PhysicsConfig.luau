@@ -3,17 +3,18 @@
 	PhysicsConfig: Central configuration for the Void Hunters 2D physics simulation.
 
 	SOURCE AUTHORITY:
-	The native defaults below are recovered from the exact user-supplied
-	voidhunters.jar census and bytecode/operator recovery.
+	Native values are recovered from the exact supplied voidhunters.jar census
+	and bytecode/operator recovery. Roblox execution mappings remain explicit
+	where native-to-Roblox unit conversion is unresolved.
 
-	Native values remain separate from Roblox execution mappings. Native values
-	must NOT be blindly substituted for Roblox-unit values when the native
-	consumer/unit conversion is unresolved.
+	ARCHITECTURE CLOCK:
+	The recovered native simulation clock is 30 Hz. All fixed-step consumers
+	must derive their cadence from SIMULATION_HZ/FIXED_DT rather than embedding
+	an independent 50 Hz assumption.
 ]]
 
 local PhysicsConfig = {
 	-- Native source defaults [SOURCE-VERIFIED]
-	-- Source: native_configuration_values.csv / native operator bytecode.
 	NATIVE_THRUSTER_FORCE = 192,
 	NATIVE_THRUSTER_BOOSTER_FORCE = 1024,
 	NATIVE_THRUSTER_SMALL_FORCE = 16,
@@ -32,16 +33,13 @@ local PhysicsConfig = {
 	NATIVE_COMPONENT_BREAKING_EXPLOSION_FORCE_MULTIPLIER = 32768,
 
 	-- Native fixed-point/operator constants [BYTECODE-VERIFIED]
-	-- Recovered from the native operator chain used by anb force/torque update.
 	NATIVE_FORCE_POINT_SHIFT = 4,
 	NATIVE_TORQUE_POINT_SHIFT = 4,
 	NATIVE_ANGULAR_VELOCITY_DENOMINATOR_SHIFT = 12,
 
-	-- Simulation Rate [ROBLOX-MAPPING]
-	-- The native census establishes the operators/settings, but does not by
-	-- itself establish Roblox's scheduler unit conversion.
-	SIMULATION_HZ = 50,
-	FIXED_DT = 1 / 50,
+	-- Simulation clock [NATIVE-VERIFIED / ARCHITECTURE MAPPING]
+	SIMULATION_HZ = 30,
+	FIXED_DT = 1 / 30,
 	MAX_FRAME_TIME = 0.25,
 	SUB_STEPS = 1,
 
@@ -51,8 +49,6 @@ local PhysicsConfig = {
 	WORLD_WIDTH_UPSHIFT = 2500,
 
 	-- Kinematic Damping [ROBLOX-MAPPING]
-	-- These factors remain execution mappings until the complete native anb
-	-- update/unit conversion is recovered.
 	VELOCITY_SUSTAIN = 0.85,
 	VELOCITY_SUSTAIN_MAX = 0.98,
 	ANGULAR_VELOCITY_SUSTAIN = 0.70,
@@ -67,8 +63,6 @@ local PhysicsConfig = {
 	MOMENT_OF_INERTIA_PERPOINT_CALC_DOWNSHIFT = 0.0005,
 
 	-- Thruster Forces [ROBLOX-MAPPING]
-	-- These are not asserted to be native-unit values. Native source values are
-	-- available above and must be mapped at the native consumer boundary.
 	THRUSTER_FORCE = 120.0,
 	THRUSTER_SMALL_FORCE = 60.0,
 	THRUSTER_BOOSTER_FORCE = 250.0,
