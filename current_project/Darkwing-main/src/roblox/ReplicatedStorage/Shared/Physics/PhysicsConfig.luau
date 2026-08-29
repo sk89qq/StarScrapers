@@ -8,13 +8,11 @@
 	where native-to-Roblox unit conversion is unresolved.
 
 	ARCHITECTURE CLOCK:
-	The recovered native simulation clock is 30 Hz. All fixed-step consumers
-	must derive their cadence from SIMULATION_HZ/FIXED_DT rather than embedding
-	an independent 50 Hz assumption.
+	The recovered native simulation clock is 30 Hz. Fixed-step consumers must
+	derive cadence from SIMULATION_HZ/FIXED_DT rather than embedding a frequency.
 ]]
 
 local PhysicsConfig = {
-	-- Native source defaults [SOURCE-VERIFIED]
 	NATIVE_THRUSTER_FORCE = 192,
 	NATIVE_THRUSTER_BOOSTER_FORCE = 1024,
 	NATIVE_THRUSTER_SMALL_FORCE = 16,
@@ -32,23 +30,19 @@ local PhysicsConfig = {
 	NATIVE_DEBRIS_DETACHMENT_FORCE_MULTIPLIER = 256,
 	NATIVE_COMPONENT_BREAKING_EXPLOSION_FORCE_MULTIPLIER = 32768,
 
-	-- Native fixed-point/operator constants [BYTECODE-VERIFIED]
 	NATIVE_FORCE_POINT_SHIFT = 4,
 	NATIVE_TORQUE_POINT_SHIFT = 4,
 	NATIVE_ANGULAR_VELOCITY_DENOMINATOR_SHIFT = 12,
 
-	-- Simulation clock [NATIVE-VERIFIED / ARCHITECTURE MAPPING]
 	SIMULATION_HZ = 30,
 	FIXED_DT = 1 / 30,
 	MAX_FRAME_TIME = 0.25,
 	SUB_STEPS = 1,
 
-	-- World Plane Alignment [ROBLOX-MAPPING]
 	FIXED_Y_ELEVATION = 3.5,
 	WORLD_BOUNDS_RADIUS = 2500,
 	WORLD_WIDTH_UPSHIFT = 2500,
 
-	-- Kinematic Damping [ROBLOX-MAPPING]
 	VELOCITY_SUSTAIN = 0.85,
 	VELOCITY_SUSTAIN_MAX = 0.98,
 	ANGULAR_VELOCITY_SUSTAIN = 0.70,
@@ -56,13 +50,11 @@ local PhysicsConfig = {
 	LINEAR_DAMPING = 0.85,
 	ANGULAR_DAMPING = 0.70,
 
-	-- Force & Torque Downshifts [ROBLOX-MAPPING]
 	ANGULAR_FORCE_DOWNSHIFT = 0.82,
 	TORQUE_DOWNSHIFT = 0.75,
 	MOMENT_OF_INERTIA_PREDIVIDE_DOWNSHIFT = 0.001,
 	MOMENT_OF_INERTIA_PERPOINT_CALC_DOWNSHIFT = 0.0005,
 
-	-- Thruster Forces [ROBLOX-MAPPING]
 	THRUSTER_FORCE = 120.0,
 	THRUSTER_SMALL_FORCE = 60.0,
 	THRUSTER_BOOSTER_FORCE = 250.0,
@@ -72,22 +64,18 @@ local PhysicsConfig = {
 	THRUSTER_PARTICLE_LIFE = 0.25,
 	THRUSTER_PARTICLE_SPEED_DOWNSHIFT = 0.80,
 
-	-- Active Braking [ROBLOX-MAPPING]
 	BRAKE_LINEAR_DAMPING = 0.40,
 	BRAKE_ANGULAR_DAMPING = 0.25,
 
-	-- Velocity Clamping [ROBLOX-MAPPING]
 	MAX_LINEAR_SPEED = 180,
 	BOOST_MAX_LINEAR_SPEED = 280,
 	MAX_ANGULAR_SPEED = math.pi * 3,
 
-	-- Mass & Inertia Baseline Defaults [ROBLOX-MAPPING]
 	DEFAULT_PIECE_MASS = 10,
 	MIN_MOMENT_OF_INERTIA = 50,
 	BASE_CHASSIS_MASS = 100,
 	BASE_CHASSIS_INERTIA = 250,
 
-	-- Collision Dynamics [ROBLOX-MAPPING]
 	DEFAULT_RESTITUTION = 0.45,
 	DEBRIS_RESTITUTION = 0.65,
 	PHYSICS_COLLISION_FORCE_MULTIPLIER = 1.25,
@@ -97,7 +85,6 @@ local PhysicsConfig = {
 	MIN_COLLISION_IMPULSE_DMG = 30,
 	RAMMING_DAMAGE_SCALE = 0.35,
 
-	-- Tractor Beam / Grappling Hook [ROBLOX-MAPPING]
 	TRACTOR_SPRING_STIFFNESS = 45.0,
 	TRACTOR_DAMPING = 8.5,
 	TRACTOR_MAX_FORCE = 800.0,
